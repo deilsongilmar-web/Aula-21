@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D 5e - Gerenciador de Ficha</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header class="header">
+            <h1>⚔️ Gerenciador de Ficha D&D 5e</h1>
+            <div class="header-buttons">
+                <button id="newCharBtn" class="btn btn-primary">Nova Ficha</button>
+                <button id="saveBtn" class="btn btn-success">Salvar</button>
+                <button id="loadBtn" class="btn btn-info">Carregar</button>
+            </div>
+        </header>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- LEFT PANEL: Atributos e Info Básica -->
+            <section class="left-panel">
+                <!-- Informações Básicas -->
+                <div class="card">
+                    <h2>Informações Básicas</h2>
+                    <div class="form-group">
+                        <label>Nome do Personagem:</label>
+                        <input type="text" id="charName" placeholder="Nome" class="input">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Classe:</label>
+                            <select id="charClass" class="input">
+                                <option value="">Selecione...</option>
+                                <option value="Bárbaro">Bárbaro</option>
+                                <option value="Bardo">Bardo</option>
+                                <option value="Bruxo">Bruxo</option>
+                                <option value="Clérigo">Clérigo</option>
+                                <option value="Druida">Druida</option>
+                                <option value="Feiticeiro">Feiticeiro</option>
+                                <option value="Guerreiro">Guerreiro</option>
+                                <option value="Ladino">Ladino</option>
+                                <option value="Mago">Mago</option>
+                                <option value="Miserável">Miserável</option>
+                                <option value="Monge">Monge</option>
+                                <option value="Paladino">Paladino</option>
+                                <option value="Patrulheiro">Patrulheiro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Nível:</label>
+                            <input type="number" id="charLevel" value="1" min="1" max="20" class="input">
+                        </div>
+                        <div class="form-group">
+                            <label>Raça:</label>
+                            <select id="charRace" class="input">
+                                <option value="">Selecione...</option>
+                                <option value="Anão">Anão</option>
+                                <option value="Elfo">Elfo</option>
+                                <option value="Gnomo">Gnomo</option>
+                                <option value="Meio-Elfo">Meio-Elfo</option>
+                                <option value="Meio-Orc">Meio-Orc</option>
+                                <option value="Humano">Humano</option>
+                                <option value="Tiefling">Tiefling</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Atributos -->
+                <div class="card">
+                    <h2>Atributos</h2>
+                    <div class="attributes">
+                        <div class="attribute">
+                            <label>FOR</label>
+                            <input type="number" id="attr-for" value="10" min="1" max="30" class="attr-input">
+                            <span class="modifier" id="mod-for">+0</span>
+                        </div>
+                        <div class="attribute">
+                            <label>DES</label>
+                            <input type="number" id="attr-des" value="10" min="1" max="30" class="attr-input">
+                            <span class="modifier" id="mod-des">+0</span>
+                        </div>
+                        <div class="attribute">
+                            <label>CON</label>
+                            <input type="number" id="attr-con" value="10" min="1" max="30" class="attr-input">
+                            <span class="modifier" id="mod-con">+0</span>
+                        </div>
+                        <div class="attribute">
+                            <label>INT</label>
+                            <input type="number" id="attr-int" value="10" min="1" max="30" class="attr-input">
+                            <span class="modifier" id="mod-int">+0</span>
+                        </div>
+                        <div class="attribute">
+                            <label>SAB</label>
+                            <input type="number" id="attr-sab" value="10" min="1" max="30" class="attr-input">
+                            <span class="modifier" id="mod-sab">+0</span>
+                        </div>
+                        <div class="attribute">
+                            <label>CAR</label>
+                            <input type="number" id="attr-car" value="10" min="1" max="30" class="attr-input">
+                            <span class="modifier" id="mod-car">+0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vida e Armadura -->
+                <div class="card">
+                    <h2>Combate</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>PV Máximo:</label>
+                            <input type="number" id="hpMax" value="10" min="1" class="input">
+                        </div>
+                        <div class="form-group">
+                            <label>PV Atual:</label>
+                            <input type="number" id="hpCurrent" value="10" min="0" class="input">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>CA:</label>
+                            <input type="number" id="ac" value="10" min="1" class="input">
+                        </div>
+                        <div class="form-group">
+                            <label>Iniciativa:</label>
+                            <span class="display-value" id="initiative">+0</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CENTER PANEL: Habilidades e Perícias -->
+            <section class="center-panel">
+                <!-- Perícias -->
+                <div class="card">
+                    <h2>Perícias</h2>
+                    <div class="skills-grid">
+                        <div class="skill">
+                            <label><input type="checkbox" class="skill-check" data-skill="acrobacia"> Acrobacia (DES)</label>
+                            <span class="skill-mod">+0</span>
+                        </div>
+                        <div class="skill">
+                            <label><input type="checkbox" class="skill-check" data-skill="adestramento"> Adestramento (SAB)</label>
+                            <span class="skill-mod">+0</span>
+                        </div>
+                        <div class="skill">
+                            <label><input type="checkbox" class="skill-check" data-skill="arcanismo"> Arcanismo (INT)</label>
+                            <span class="skill-mod">+0</span>
+                        </div>
+                        <div class="skill">
+                            <label><input type="checkbox" class="skill-check" data-skill="atletismo"> Atletismo (FOR)</label>
+                            <span class="skill-mod">+0</span>
+                        </div>
+                        <div class="skill">
+                            <label><input type="checkbox" class="skill-check" data-skill="atuacao"> Atuação (CAR)</label>
+                            <span class="skill-mod">+0</span>
+                        </div>
+                        <div class="skill">
+                            <label><input type="checkbox" class="skill-check" data-skill="enganacao"> Enganação (CAR)</label>
+                            <span class="skill-mod">+0</span>
+                        </div>
+                        <div class="skill">
+                            <label><input type="checkbox" class="skill-check" data-skill="furtividade"> Furtividade (DES)</label>
+                            <span class="skill-mod">+0</span>
+                        </div>
+                        <div class="skill">
+                            <label><input type="checkbox" class="skill-check" data-skill="historia"> História (INT)</label>
+                            <span class="skill-mod">+0</span>
+                        </div>
+                        <div class="skill">
+                            <label><input type="checkbox" class="skill-check" data-skill="insight"> Insight (SAB)</label>
+                            <span class="skill-mod">+0</span>
+                        </div>
+                        <div class="skill">
+                            <label><input type="checkbox" class="skill-check" data-skill="intimidacao"> Intimidação (CAR)</label>
+                            <span class="skill-mod">+0</span>
+                        </div>
+                        <div class="skill">
+                            <label><input type="checkbox" class="skill-check" data-skill="investigacao"> Investigação (INT)</label>
+                            <span class="skill-mod">+0</span>
+                        </div>
+                        <div class="skill">
+                            <label><input type="checkbox" class="skill-check" data-skill="medicina"> Medicina (SAB)</label>
+                            <span class="skill-mod">+0</span>
+                        </div>
+                        <div class="skill">
+                            <label><input type="checkbox" class="skill-check" data-skill="natureza"> Natureza (INT)</label>
+                            <span class="skill-mod">+0</span>
+                        </div>
+                        <div class="skill">
+                            <label><input type="checkbox" class="skill-check" data-skill="percepcao"> Percepção (SAB)</label>
+                            <span class="skill-mod">+0</span>
+                        </div>
+                        <div class="skill">
+                            <label><input type="checkbox" class="skill-check" data-skill="persuasao"> Persuasão (CAR)</label>
+                            <span class="skill-mod">+0</span>
+                        </div>
+                        <div class="skill">
+                            <label><input type="checkbox" class="skill-check" data-skill="religiao"> Religião (INT)</label>
+                            <span class="skill-mod">+0</span>
+                        </div>
+                        <div class="skill">
+                            <label><input type="checkbox" class="skill-check" data-skill="sobrevivencia"> Sobrevivência (SAB)</label>
+                            <span class="skill-mod">+0</span>
+                        </div>
+                        <div class="skill">
+                            <label><input type="checkbox" class="skill-check" data-skill="prestidigitacao"> Prestidigitação (DES)</label>
+                            <span class="skill-mod">+0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Armas -->
+                <div class="card">
+                    <h2>Armas</h2>
+                    <div id="weaponsList" class="items-list">
+                        <div class="item">
+                            <input type="text" placeholder="Nome da arma" class="weapon-name">
+                            <input type="text" placeholder="Dano (ex: 1d8+2)" class="weapon-damage">
+                            <button class="btn btn-danger btn-sm" onclick="removeWeapon(this)">✕</button>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary" onclick="addWeapon()">+ Adicionar Arma</button>
+                </div>
+            </section>
+
+            <!-- RIGHT PANEL: Inventário e Notas -->
+            <section class="right-panel">
+                <!-- Inventário -->
+                <div class="card">
+                    <h2>Inventário</h2>
+                    <div id="inventoryList" class="items-list">
+                        <div class="inventory-item">
+                            <input type="text" placeholder="Item" class="inv-name">
+                            <input type="number" placeholder="Qtd" min="1" value="1" class="inv-qty">
+                            <button class="btn btn-danger btn-sm" onclick="removeInventoryItem(this)">✕</button>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary" onclick="addInventoryItem()">+ Adicionar Item</button>
+                </div>
+
+                <!-- Ouro -->
+                <div class="card">
+                    <h2>Moeda</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Platina:</label>
+                            <input type="number" id="platinum" value="0" min="0" class="input">
+                        </div>
+                        <div class="form-group">
+                            <label>Ouro:</label>
+                            <input type="number" id="gold" value="0" min="0" class="input">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Prata:</label>
+                            <input type="number" id="silver" value="0" min="0" class="input">
+                        </div>
+                        <div class="form-group">
+                            <label>Cobre:</label>
+                            <input type="number" id="copper" value="0" min="0" class="input">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notas -->
+                <div class="card">
+                    <h2>Notas</h2>
+                    <textarea id="notes" placeholder="Escreva suas notas aqui..." class="textarea"></textarea>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal para carregar ficha -->
+    <div id="loadModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <h2>Carregar Ficha</h2>
+            <div id="savedChars" class="saved-chars"></div>
+            <button class="btn btn-secondary" onclick="closeLoadModal()">Fechar</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
