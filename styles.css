@@ -8,14 +8,14 @@
     --primary: #8b5a3c;
     --primary-dark: #6b4423;
     --primary-light: #d4af37;
-    --secondary: #2c3e50;
+    --secondary: #2f6397;
     --danger: #e74c3c;
     --success: #27ae60;
-    --info: #3498db;
-    --warning: #f39c12;
+    --info: #1070cf;
+    --warning: #fcce00;
     --light: #ecf0f1;
-    --dark: #2c3e50;
-    --border: #bdc3c7;
+    --dark: #0773df;
+    --border: #374249;
 }
 
 body {
@@ -270,7 +270,7 @@ body {
 }
 
 .btn-info:hover {
-    background: #2980b9;
+    background: #4d4f50;
 }
 
 .btn-secondary {
@@ -279,7 +279,7 @@ body {
 }
 
 .btn-secondary:hover {
-    background: #1a252f;
+    background: #0776df;
 }
 
 .btn-danger {
