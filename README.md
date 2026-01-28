@@ -81,6 +81,6 @@ Deilson Mendes - Desenvolvedor Web & Serviços Elétricos/Solares
 
 
 
-### Dica de ouro para o seu repositório:
+
 
 
