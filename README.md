@@ -56,12 +56,11 @@ Este é um projeto de código aberto. Sinta-se à vontade para:
 
 ---
 
-**Desenvolvido para aventureiros por [Deilson Mendes/GitHub]**
+**Desenvolvido para aventureiros por [Deilson Mendes]**
 
 ---
 
+
 ### Dica de ouro para o seu repositório:
 
-Como o seu HTML chama um arquivo `app.js` e um `styles.css`, certifique-se de que esses arquivos existam na mesma pasta. Se você ainda não implementou a lógica de "Salvar" no JavaScript, eu posso te ajudar a criar o código básico para o `app.js` usando `localStorage`.
 
-**Gostaria que eu gerasse o código JavaScript básico para as funções de Salvar e Calcular Atributos?**
